@@ -1,0 +1,244 @@
+# I3 configuration(v4) for GGerdau
+# It will not be overwritten, so edit it as you like.
+# Should you change your keyboard layout somewhen, delete
+# Please see http://i3wm.org/docs/userguide.html for a complete reference of how to setup i3
+
+# Sets the default mod key to Win/Super
+# FYI everything that is $mod+keyToHit will use win/super as it's key
+set $mod Mod4
+
+# Sets up a better font
+#exec i3 --force-xinerama -V >>~/.i3/i3log 2>&1
+
+# Fixes the font that was just setup
+#font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+
+# Hit the mod (in this case Win/Super) in order to drag a window. 
+# This is a must since there is no drag bar.  
+floating_modifier $mod
+
+# start a terminal
+bindsym $mod+Return exec i3-sensible-terminal
+
+# kill focused window - original = mod+Shift+q
+bindsym $mod+q kill
+
+# start dmenu (a program launcher)
+# This can be used to startup programs, just hit win/super + d in order to start it up.
+# You can even use vim (alt+hjkl) in order change between the next/last order
+# It is pretty much like a search bar IMO
+bindsym $mod+d exec dmenu_run
+
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# split in horizontal orientation
+bindsym $mod+y split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+Shift+f fullscreen
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# switch to workspace
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+bindsym $mod+alt+1 workspace 11
+bindsym $mod+alt+2 workspace 12
+bindsym $mod+alt+3 workspace 13
+bindsym $mod+alt+4 workspace 14
+bindsym $mod+alt+5 workspace 15
+bindsym $mod+alt+6 workspace 16
+bindsym $mod+alt+7 workspace 17
+bindsym $mod+alt+8 workspace 18
+bindsym $mod+alt+9 workspace 19
+bindsym $mod+alt+0 workspace 20
+
+# move focused container to workspace
+
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+
+# reload the configuration file
+
+bindsym $mod+Shift+c reload
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+#Use this in order to resize windows with hjkl
+bindsym $mod+r mode "resize"
+
+#Font to MONOSPACE 8, simply because it looks great and is super readable
+font pango: Monospace 8
+
+#Exec startupProgs, programs that automatically startup in order to save time, in this case music and a web browser
+exec clementine
+exec qupzilla
+
+#firefox, intellij, clementine and extra commands
+bindsym $mod+Control+g exec /home/geo/firefox/firefox
+bindsym $mod+f exec terminator --geometry=x11 --command=ranger
+bindsym $mod+a exec terminator --geometry=x11 --command=vim
+bindsym $mod+Control+f exec pcmanfm
+bindsym $mod+t exec urxvt
+bindsym $mod+c exec clementine
+bindsym $mod+shift+z exec /home/geo/Desktop/idea-IU-135.1289/bin/idea.sh
+bindsym $mod+z exec gedit
+bindsym $mod+shift+d exec /home/geo/clion-1.0/bin/clion.sh
+for_window [class="^.*"] border pixel 2
+
+#Focused window tags
+set $bg     #282828
+set $fg     #66ffcc
+set $hi     #ff0000
+set $ac     #ffffff
+set $tx     #333333
+set $ia     #ffffff
+set $be     #8faf9f
+set $yw     #ccdc90
+set $gn     #88b090
+set $rd     #e89393
+set $white  #ffffff
+
+#White and black theme
+client.focused              $ac        $ac         $tx
+client.unfocused            $bg        $bg         $ia
+client.focused_inactive     $bg        $bg         $ac
+client.urgent               $rd        $rd         $tx
+exec nm-applet
+
+#sound Setting Configs:
+bindsym $mod+comma exec amixer -D pulse sset Master 10%-
+bindsym $mod+period exec amixer -D pulse sset Master 10%+
+bindsym $mod+m exec amixer -D pulse sset Master 0%
+
+#bar Config, black and blue/white bar
+# Also, this uses the i3status config file in order to determine what is going to show up in the bar
+bar {
+	mode hide
+    status_command i3status --config /home/geo/.i3status.conf
+	font pango: Ubuntu sans mono 8
+
+    #Sets the colors
+	colors{
+	background #333333
+	statusline #ffffff
+	separator #ffffff
+        focused_workspace  #112233   #dedada #000000
+        active_workspace   #112233        $white         #003388
+        inactive_workspace #000000      #686868 #dadada
+        urgent_workspace   $rd        $rd         $tx
+}
+
+}
+
+#These are programs that autostart
+#Redshift for redtinting to reduce eye strain
+#Feh to set the background, you are going to have to set this yourself/install feh if you haven't
+#xfce power manager in order to see my battery levels
+exec redshift
+exec feh /home/geo/Pictures/pick2.jpg --bg-scale
+exec gtk-redshift
+exec redshift-gtk
+exec xfce4-power-manager
+
+#Controls to startup new programs
+bindsym $mod+p exec gnome-screenshot
+bindsym $mod+n exec pavucontrol
+bindsym $mod+shift+m exec clementine -t
+bindsym $mod+shift+comma exec clementine -r
+bindsym $mod+shift+period exec clementine -f
+bindsym $mod+Control+m exec xbacklight -set 10
+bindsym $mod+Control+comma exec xbacklight -set 50
+bindsym $mod+Control+period exec xbacklight -set 100
+bindsym $mod+Control+shift+period exec xbacklight -inc 1
+bindsym $mod+Control+shift+comma exec xbacklight -dec 1
+bindsym $mod+Control+n exec xbacklight -set 1 
+bindsym $mod+g exec qupzilla
+bindsym $mod+shift+g exec chromium-browser
+bindsym $mod+Control+d exec lxrandr
+bindsym $mod+x exec eclipse
+bindsym $mod+Control+t exec lxtask
+
+# Workspace swapping next/prev
+bindsym $mod+i workspace prev
+bindsym $mod+o workspace next
+bindsym $mod+shift+i move container to workspace prev
+bindsym $mod+shift+o move container to workspace next
+
