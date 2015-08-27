@@ -49,3 +49,4 @@ set backspace=indent,eol,start
  
 let CoVim_default_name="geo" 
 nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
+nnoremap "1z"=1z=
