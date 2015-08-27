@@ -1,0 +1,56 @@
+//MIT/X11 License
+/**
+Current settings:
+
+Monospace 14 
+black, white, slightly blue colo
+i3-sensible terminal, **I3 must be configured/installed for i3st
+Vertically stacking
+
+*/
+#include "rofi.h"
+Settings config = {
+    // Set the default window opacity.
+    // This option only works when running a composite manager.
+    // -o
+    .window_opacity    =                   90,
+    // Border width around the window.
+    .menu_bw           =                     0,
+    // The width of the switcher. (0-100 in % > 100 in pixels)
+    .menu_width        =                    35,
+    // Maximum number of options to show.
+    .menu_lines        =                    48,
+    // Font
+    .menu_font         = "Monospace:pixelsize=14",
+    // Foreground color
+    .menu_fg           = "#333333",
+    // Background color
+    .menu_bg           = "#111111",
+    // Foreground color (selected)
+    .menu_hlfg         = "#dfdfff",
+    // Background color (selected)
+    .menu_hlbg         = "#55441f",
+    // Border color.
+    .menu_bc           = "ffffff",
+    // Directly select when only 1 choice is left
+    .zeltak_mode       =                     0,
+    // Terminal to use. (for ssh and open in terminal)
+    .terminal_emulator = "i3-sensible-terminal",
+#ifdef I3
+#endif
+    // Key binding
+    .window_key = "mod4+s",
+    .run_key    = "mod4+shift+s",
+    .ssh_key    = "mod4+Control+s",
+    // Location of the window.   WL_CENTER, WL_NORTH_WEST, WL_NORTH, WL_NORTH_EAST, etc.
+    .location          = WL_SOUTH,
+    // Mode of window, list (Vertical) or dmenu like (Horizontal)
+    .wmode             = HORIZONTAL,
+    // Padding of the window.
+    .padding           = 0,
+    .show_title        = 2,
+    .y_offset          = -2,
+    .x_offset          = -2,
+    .fixed_num_lines   = 0
+};
+
